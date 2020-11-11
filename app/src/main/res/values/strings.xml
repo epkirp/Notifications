@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Notifications</string>
+
+    <string name="ok">OK</string>
+
+    <string name="no_notifications">There is no notifications</string>
+</resources>
