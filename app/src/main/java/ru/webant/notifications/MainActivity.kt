@@ -2,7 +2,7 @@ package ru.webant.notifications
 
 import android.os.Bundle
 import com.arellomobile.mvp.MvpAppCompatActivity
-import ru.webant.notifications.fragments.NotificationsFragment
+import ru.webant.notifications.fragments.notifications_list.NotificationsFragment
 
 class MainActivity : MvpAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

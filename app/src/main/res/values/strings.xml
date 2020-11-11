@@ -2,6 +2,7 @@
     <string name="app_name">Notifications</string>
 
     <string name="ok">OK</string>
-
     <string name="no_notifications">There is no notifications</string>
+    <string name="notification_description">from %1$s to %2$s | Every %3$s min</string>
+    <string name="loading"> Loading…</string>
 </resources>
