@@ -17,5 +17,6 @@
     <style name="Theme.NotificationsCustom" parent="Theme.Notifications">
         <item name="colorPrimary">@color/grey</item>
         <item name="colorAccent">@color/grey</item>
+        <item name="colorPrimaryVariant">@color/grey</item>
     </style>
 </resources>

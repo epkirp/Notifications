@@ -6,10 +6,10 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 import ru.webant.notifications.fragments.base.BaseView
 
 interface AddNotificationView : BaseView {
-    @StateStrategyType(AddToEndSingleStrategy::class)
+    @StateStrategyType(OneExecutionStateStrategy::class)
     fun openStartTimePickerFragment(initialTime: Long)
 
-    @StateStrategyType(AddToEndSingleStrategy::class)
+    @StateStrategyType(OneExecutionStateStrategy::class)
     fun openEndTimePickerFragment(initialTime: Long)
 
     @StateStrategyType(AddToEndSingleStrategy::class)

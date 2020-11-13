@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_notification.view.*
 import ru.webant.domain.NotificationEntity
 import ru.webant.notifications.R
+import ru.webant.notifications.utils.convertLongToString
 
 class NotificationsAdapter : RecyclerView.Adapter<NotificationsAdapter.NotificationHolder>() {
 
@@ -76,9 +77,9 @@ class NotificationsAdapter : RecyclerView.Adapter<NotificationsAdapter.Notificat
                 tvDescription.text =
                     context.getString(
                         R.string.notification_description,
-                        notification.startTime,
-                        notification.endTime,
-                        notification.interval
+                        convertLongToString(notification.startTime),
+                        convertLongToString(notification.endTime),
+                        notification.interval.toString()
                     )
                 view.switchActive.isChecked = notification.isActive
             }

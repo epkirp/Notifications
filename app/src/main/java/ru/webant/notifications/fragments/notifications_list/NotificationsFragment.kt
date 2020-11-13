@@ -79,6 +79,8 @@ class NotificationsFragment : BaseFragment(), NotificationsView {
             ?.addToBackStack(null)
             ?.add(R.id.container, AddNotificationFragment())
             ?.commit()
+
+        presenter.onSwipeToRefresh()
     }
 
     override fun showNewItems(items: List<NotificationEntity>) {

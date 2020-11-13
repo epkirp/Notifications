@@ -1,7 +1,6 @@
 package ru.webant.notifications.fragments.add_notification
 
 import android.app.AlertDialog
-import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -12,8 +11,8 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.fragment_add_notification.*
 import ru.webant.notifications.App
 import ru.webant.notifications.R
-import ru.webant.notifications.fragments.TimePickerFragment
 import ru.webant.notifications.fragments.base.BaseFragment
+import ru.webant.notifications.utils.openTimePickerFragment
 
 class AddNotificationFragment : BaseFragment(), AddNotificationView {
 
@@ -66,14 +65,18 @@ class AddNotificationFragment : BaseFragment(), AddNotificationView {
     }
 
     override fun openStartTimePickerFragment(initialTime: Long) {
-        openTimePickerFragment(initialTime) { hourOfDay: Int, minute: Int ->
-            presenter.onStartTimeChanged(hourOfDay, minute)
+        fragmentManager?.let {
+            openTimePickerFragment(it, initialTime) { hourOfDay: Int, minute: Int ->
+                presenter.onStartTimeChanged(hourOfDay, minute)
+            }
         }
     }
 
     override fun openEndTimePickerFragment(initialTime: Long) {
-        openTimePickerFragment(initialTime) { hourOfDay: Int, minute: Int ->
-            presenter.onEndTimeChanged(hourOfDay, minute)
+        fragmentManager?.let {
+            openTimePickerFragment(it, initialTime) { hourOfDay: Int, minute: Int ->
+                presenter.onEndTimeChanged(hourOfDay, minute)
+            }
         }
     }
 
@@ -90,26 +93,6 @@ class AddNotificationFragment : BaseFragment(), AddNotificationView {
             .setMessage(resources.getString(messageId))
             .setNeutralButton(R.string.ok, null)
             .show()
-    }
-
-    private fun openTimePickerFragment(
-        initialTime: Long,
-        action: (hourOfDay: Int, minute: Int) -> Unit
-    ) {
-        val timePickerFragment = TimePickerFragment()
-        val args = Bundle()
-        args.putLong(TimePickerFragment.BUNDLE_INITIAL_TIME, initialTime)
-        timePickerFragment.arguments = args
-
-        timePickerFragment.callback = object : TimePickerFragment.Callback {
-            override fun onTimeChosen(hourOfDay: Int, minute: Int) {
-                action.invoke(hourOfDay, minute)
-            }
-
-        }
-        fragmentManager?.let {
-            timePickerFragment.show(it, TimePickerFragment.TIME_PICKER_DIALOG_TAG)
-        }
     }
 
     private fun setUpTimeListeners() {

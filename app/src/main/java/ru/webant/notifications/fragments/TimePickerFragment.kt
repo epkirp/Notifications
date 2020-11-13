@@ -10,11 +10,11 @@ import ru.webant.notifications.utils.convertLongToMinutesLessHour
 
 class TimePickerFragment : MvpAppCompatDialogFragment(), TimePickerDialog.OnTimeSetListener {
 
-    lateinit var callback: Callback
-
     interface Callback {
         fun onTimeChosen(hourOfDay: Int, minute: Int)
     }
+
+    lateinit var callback: Callback
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val bundle: Bundle? = this.arguments

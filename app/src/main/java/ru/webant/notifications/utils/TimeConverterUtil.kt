@@ -19,3 +19,22 @@ fun convertLongToMinutesLessHour(milliseconds: Long): Int {
     val hours = convertLongToHours(milliseconds)
     return convertLongToMinutes(milliseconds - hours * MILLISECONDS_IN_ONE_HOUR)
 }
+
+fun convertLongToString(milliseconds: Long): String {
+    val hourOfDay = convertLongToHours(milliseconds)
+    val minute = convertLongToMinutesLessHour(milliseconds)
+
+    val stringHour = if (hourOfDay % 10 == 0) {
+        "0$hourOfDay"
+    } else {
+        hourOfDay.toString()
+    }
+
+    val stringMinute = if (minute % 10 == 0) {
+        "0$minute"
+    } else {
+        minute.toString()
+    }
+
+    return "$stringHour:$stringMinute"
+}
