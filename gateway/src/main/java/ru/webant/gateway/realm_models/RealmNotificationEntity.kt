@@ -8,13 +8,12 @@ import java.sql.Time
 
 @RealmClass
 open class RealmNotificationEntity(
-
     @PrimaryKey
     open var id: Int = -1,
-    open var name: String,
-    open var startTime: Time = Time(0),
-    open var endTime: Time = Time(0),
-    open var interval: Time = Time(0),
+    open var name: String = "",
+    open var startTime: Long = 0,
+    open var endTime: Long = 0,
+    open var interval: Long = 0,
     open var isActive: Boolean = false
 ) : RealmObject() {
 

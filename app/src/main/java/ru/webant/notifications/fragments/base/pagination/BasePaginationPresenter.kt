@@ -98,7 +98,7 @@ abstract class BasePaginationPresenter<T : BasePaginationView<I>, I : Any> : Bas
                     currentPage++
                     totalItems = response.totalItems
                     countOfPages = response.countOfPages
-                    viewState.showNewItems(response.items.size)
+                    viewState.showNewItems(response.items)
                 } else {
                     onFailureLoad()
                 }

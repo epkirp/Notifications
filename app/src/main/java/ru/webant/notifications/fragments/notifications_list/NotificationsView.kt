@@ -9,4 +9,7 @@ interface NotificationsView : BasePaginationView<NotificationEntity> {
 
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun openEditNotificationFragment(notification: NotificationEntity)
+
+    @StateStrategyType(AddToEndSingleStrategy::class)
+    fun openAddNotificationFragment()
 }

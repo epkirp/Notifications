@@ -27,4 +27,8 @@ class NotificationsPresenter @Inject constructor(
             //todo меняем isActive на false в бд
         }
     }
+
+    fun onAddNotification() {
+        viewState.openAddNotificationFragment()
+    }
 }

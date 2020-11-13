@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.layout_placeholder.*
 import ru.webant.domain.NotificationEntity
 import ru.webant.notifications.App
 import ru.webant.notifications.R
+import ru.webant.notifications.fragments.add_notification.AddNotificationFragment
 import ru.webant.notifications.fragments.base.BaseFragment
 import ru.webant.notifications.fragments.edit_notification.EditNotificationFragment
 import ru.webant.notifications.fragments.edit_notification.EditNotificationFragment.Companion.BUNDLE_NOTIFICATION_INFO
@@ -51,6 +52,10 @@ class NotificationsFragment : BaseFragment(), NotificationsView {
         refreshLayout.setOnRefreshListener {
             presenter.onSwipeToRefresh()
         }
+
+        ibAdd.setOnClickListener {
+            presenter.onAddNotification()
+        }
     }
 
     override fun openEditNotificationFragment(notification: NotificationEntity) {
@@ -65,6 +70,14 @@ class NotificationsFragment : BaseFragment(), NotificationsView {
             ?.beginTransaction()
             ?.addToBackStack(null)
             ?.add(R.id.container, editNotificationFragment)
+            ?.commit()
+    }
+
+    override fun openAddNotificationFragment() {
+        activity?.supportFragmentManager
+            ?.beginTransaction()
+            ?.addToBackStack(null)
+            ?.add(R.id.container, AddNotificationFragment())
             ?.commit()
     }
 
